@@ -70,4 +70,7 @@ intento2=merge(Medicos,EuroAmer2,by.x='Pais', by.y='Pais')
 head(intento2)
 ```
 
+```{r}
+## salen 81 paises 
+```
 
