@@ -38,6 +38,7 @@ Medicos=separate(Medicos,Numero_medicos,into=c("Numero_medicos",'delete'), "\\ "
 ```
 
 
+
 ```{r}
 #Vamos a intentar quedarnos con los paises que son de europa y america 
 ```
@@ -51,28 +52,22 @@ install.packages("rio")
 library(rio)
 ```
 
-
-
-```{r}
-Europa_America="https://github.com/IvonneMM/Grupo2_COVID2020/raw/master/America%20y%20Europa3%20(2).xls"
-
-ExcelEA=import(Europa_America)
-
-```
-
-
 ```{r}
 Medicos$Numero_medicos=as.numeric(Medicos$Numero_medicos)
 ```
 
-```{r}
-names(ExcelEA)
-names(ExcelEA)= c("Pais")
-```
 
 ```{r}
-intento1=merge(Medicos,ExcelEA,by.x='Pais', by.y='Pais') 
-head(intento1)
+Europa_America2="https://github.com/IvonneMM/Grupo2_COVID2020/raw/master/America%20y%20Europa3%20(3).xls"
+
+EuroAmer2=import(Europa_America2)
+
+```
+
+
+```{r}
+intento2=merge(Medicos,EuroAmer2,by.x='Pais', by.y='Pais') 
+head(intento2)
 ```
 
 
