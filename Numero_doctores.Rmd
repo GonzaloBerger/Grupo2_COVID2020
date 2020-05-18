@@ -1,0 +1,39 @@
+```{r}
+#Limpieza de tabla de número de doctores
+```
+
+
+```{r}
+install.packages("htmltab")
+
+
+```
+
+```{r}
+library(htmltab)
+```
+
+```{r}
+LinkDoc="https://www.cia.gov/library/publications/resources/the-world-factbook/fields/359.html"
+
+Link_path_doc='//*[@id="fieldListing"]'
+```
+
+```{r}
+Doctors= htmltab (doc = LinkDoc,which = Link_path_doc)
+```
+
+```{r}
+names(Doctors)
+names(Doctors)= c ("Pais", "Doctores")
+```
+
+```{r}
+library(tidyr)
+```
+
+
+```{r}
+Doctors=separate(Doctors,Doctores,into=c("Doctores",'delete'), "\\ ")[,-3]
+```
+
