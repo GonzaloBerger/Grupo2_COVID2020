@@ -20,12 +20,12 @@ Link_path_doc='//*[@id="fieldListing"]'
 ```
 
 ```{r}
-Doctors= htmltab (doc = LinkDoc,which = Link_path_doc)
+Medicos= htmltab (doc = LinkDoc,which = Link_path_doc)
 ```
 
 ```{r}
-names(Doctors)
-names(Doctors)= c ("Pais", "Doctores")
+names(Medicos)
+names(Medicos)= c ("Pais", "Numero_medicos")
 ```
 
 ```{r}
@@ -34,6 +34,45 @@ library(tidyr)
 
 
 ```{r}
-Doctors=separate(Doctors,Doctores,into=c("Doctores",'delete'), "\\ ")[,-3]
+Medicos=separate(Medicos,Numero_medicos,into=c("Numero_medicos",'delete'), "\\ ")[,-3]
 ```
+
+
+```{r}
+#Vamos a intentar quedarnos con los paises que son de europa y america 
+```
+
+
+```{r}
+install.packages("rio")
+```
+
+```{r}
+library(rio)
+```
+
+
+
+```{r}
+Europa_America="https://github.com/IvonneMM/Grupo2_COVID2020/raw/master/America%20y%20Europa3%20(2).xls"
+
+ExcelEA=import(Europa_America)
+
+```
+
+
+```{r}
+Medicos$Numero_medicos=as.numeric(Medicos$Numero_medicos)
+```
+
+```{r}
+names(ExcelEA)
+names(ExcelEA)= c("Pais")
+```
+
+```{r}
+intento1=merge(Medicos,ExcelEA,by.x='Pais', by.y='Pais') 
+head(intento1)
+```
+
 
